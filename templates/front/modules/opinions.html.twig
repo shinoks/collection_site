@@ -1,0 +1,6 @@
+{% set currentPath = app.request.attributes.get('_route') %}
+{% set id = app.request.attributes.get('id') %}
+{% for item in module.variable %}
+  {{ render(controller('App\\Controller\\OpinionsController::getLatestOpinions',{'limit':item|raw,'route':currentPath,'id':id})) }}
+{% endfor %}
+{{ content|raw }}

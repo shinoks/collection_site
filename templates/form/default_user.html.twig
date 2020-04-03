@@ -1,0 +1,108 @@
+{% block form_errors %}
+    {% spaceless %}
+    {% if errors|length > 0 %}
+        {% for error in errors %}
+                <div class="alert alert-danger">{{ error.message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endspaceless %}
+{% endblock %}
+{% block text_widget %}
+    <div class="form-group">
+        {% set type = type|default('text') %}
+        <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    </div>
+{% endblock %}
+
+{% block range_widget %}
+    <div class="form-group">
+        {% set type = type|default('range') %}
+        <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+
+    </div>
+
+{% endblock %}
+
+{% block number_widget %}
+    <div class="form-group">
+        <input type="text" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    </div>
+{% endblock %}
+
+{% block money_widget %}
+    <div class="form-group">
+            <div class="input-group">
+            <span class="input-group-addon"><b>zł</b></span>
+            <input type="text" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+            <span class="input-group-addon">.00 PLN</span>
+        </div>
+    </div>
+{% endblock %}
+
+{% block tel_widget %}
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><b>+48 </b></span>
+            <input type="text" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        </div>
+    </div>
+{% endblock %}
+
+{% block email_widget %}
+    <div class="form-group">
+        {% set type = type|default('email') %}
+        <div class="input-group">
+            <span class="input-group-addon">@</span>
+            <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        </div>
+    </div>
+{% endblock %}
+
+{% block password_widget %}
+    <div class="form-group">
+        {% set type = type|default('password') %}
+        <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} placeholder="*********"/>
+    </div>
+{% endblock %}
+
+{% block textarea_widget %}
+    <div class="form-group">
+        <textarea class="form-control" {{ block('widget_attributes') }}> {% if value is not empty %}{{ value }}{% endif %}</textarea>
+    </div>
+{% endblock %}
+
+{% block choice_widget %}
+        <select class="form-control" {{ block('widget_attributes') }}>
+            {%- if preferred_choices|length > 0 -%}
+                {% set options = preferred_choices %}
+                {{- block('choice_widget_options') -}}
+                {%- if choices|length > 0 and separator is not none -%}
+                    <option disabled="disabled">{{ separator }}</option>
+                {%- endif -%}
+            {%- endif -%}
+            {%- set options = choices -%}
+            {{- block('choice_widget_options') -}}
+        </select>
+{% endblock %}
+
+{% block file_widget %}
+    <div class="form-group">
+        {% set type = type|default('file') %}
+        <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        {% if form.vars.data is not empty %}<img class="img-thumbnail" style="width:200px; height:200px;" src="{{ asset(form.vars.data) }}"/>{% endif %}
+    </div>
+{% endblock %}
+
+
+{% block submit_widget %}
+    <div class="form-group">
+
+        {% set type = type|default('submit') %}
+
+        <button class="btn btn-primary btn-sm" {{ block('button_attributes') }}>
+            <i class="fa fa-dot-circle-o"></i>
+            {% if label is empty %}Zapisz{% else %}{{ label|trans }}{% endif %}
+        </button>
+    </div>
+
+{% endblock %}

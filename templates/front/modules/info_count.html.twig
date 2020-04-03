@@ -1,0 +1,21 @@
+<div class="count-area">
+    <div class="counter-min text-center" id="counter-min">
+        <span class="counter-head">Stan zbiórki:</span> <span class="counter-count"> 0 zł</span> |
+        <span class="counter-head">Cel zbiórki:</span> <span class="counter-count"> 0 zł |</span>
+        <span class="counter-head">Inwestorzy:</span> <span class="counter-count"> 0 |</span>
+        <span class="counter-head">Do końca:</span> <span class="counter-count"> 0 dni</span>
+    </div>
+</div>
+
+<script>
+        $(document).ready(function(){
+            $(window).scroll(function(){
+                if ($(this).scrollTop() > 94) {
+                    $('#counter-min').addClass('fixed-counter');
+                } else {
+                    $('#counter-min').removeClass('fixed-counter');
+                }
+            });
+
+        });
+</script>

@@ -1,0 +1,23 @@
+admin_zbiorki:
+    path: /
+    controller: App\Controller\Admin\ZbiorkaController::zbiorki
+
+admin_zbiorka_new:
+    path: /new
+    controller: App\Controller\Admin\ZbiorkaController::new
+
+admin_zbiorka_show:
+    path: /{id}
+    controller: App\Controller\Admin\ZbiorkaController::show
+
+admin_zbiorka_edit:
+    path: /edit/{id}
+    controller: App\Controller\Admin\ZbiorkaController::edit
+
+admin_zbiorka_disable:
+    path: /disable/{id}/{status}
+    controller: App\Controller\Admin\ZbiorkaController::disable
+
+admin_zbiorka_delete:
+    path: /delete/{id}
+    controller: App\Controller\Admin\ZbiorkaController::delete

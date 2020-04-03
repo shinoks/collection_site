@@ -1,0 +1,120 @@
+admin_login:
+    path: /login
+    controller: App\Controller\SecurityController::adminLogin
+admin_logout:
+    path: /logout
+admin:
+    path: /
+    controller: App\Controller\Admin\DefaultController::index
+
+admin_social_resource:
+    resource: "admin/social.yml"
+    prefix: /social
+admin_socials:
+    path: /social
+    controller: App\Controller\Admin\SocialController::index
+
+admin_user:
+    resource: "admin/user.yml"
+    prefix: /user
+
+admin_admin:
+    resource: "admin/admin.yml"
+    prefix: /admin
+
+admin_article:
+    resource: "admin/article.yml"
+    prefix: /article
+
+admin_category:
+    resource: "admin/category.yml"
+    prefix: /category
+
+admin_config:
+    resource: "admin/config.yml"
+    prefix: /config
+
+admin_contact:
+    resource: "admin/contacts.yml"
+    prefix: /contact
+
+admin_offer:
+    resource: "admin/offer.yml"
+    prefix: /offer
+
+admin_offer_statuses:
+    resource: "admin/offer_status.yml"
+    prefix: /offer_status
+
+admin_recruitment:
+    resource: "admin/recruitment.yml"
+    prefix: /recruitment
+
+admin_recruitment_user:
+    resource: "admin/recruitment_user.yml"
+    prefix: /recruitment_user
+
+admin_recruitment_statuses:
+    resource: "admin/recruitment_status.yml"
+    prefix: /recruitment_status
+
+admin_recruitment_user_statuses:
+    resource: "admin/recruitment_user_status.yml"
+    prefix: /recruitment_user_status
+
+admin_file_manager:
+    resource: "admin/file_manager.yml"
+    prefix: /file_manager
+
+admin_realization:
+    resource: "admin/realization.yml"
+    prefix: /realization
+
+admin_menu:
+    resource: "admin/menu.yml"
+    prefix: /menu
+
+admin_comment:
+    resource: "admin/comments.yml"
+    prefix: /comment
+
+admin_file_browser:
+    resource: "admin/file_browser.yml"
+    prefix: /file_browser
+
+admin_subscriber:
+    resource: "admin/subscriber.yml"
+    prefix: /subscriber
+
+admin_module:
+    resource: "admin/module.yml"
+    prefix: /module
+
+admin_module_position:
+    resource: "admin/module_position.yml"
+    prefix: /module_position
+
+admin_module_genus:
+    resource: "admin/module_genus.yml"
+    prefix: /module_genus
+
+admin_newsletter:
+    resource: "admin/newsletter.yml"
+    prefix: /newsletter
+
+admin_email_queue:
+    resource: "admin/email_queue.yml"
+    prefix: /email_queue
+
+admin_opinions:
+    resource: "admin/opinions.yml"
+    prefix: /opinions
+
+admin_zbiorki:
+    resource: "admin/zbiorki.yml"
+    prefix: /zbiorki
+
+admin_pakiet:
+    resource: "admin/pakiet.yml"
+    prefix: /pakiet
+

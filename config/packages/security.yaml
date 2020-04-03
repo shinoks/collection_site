@@ -1,0 +1,79 @@
+security:
+    providers:
+        user_entity:
+            entity:
+                class: App\Entity\User
+                property: email
+        admin_entity:
+            entity:
+                class: App\Entity\Admin
+                property: username
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        admin:
+            pattern: ^/admin
+            http_basic: ~
+            provider: admin_entity
+            anonymous: ~
+            form_login:
+                login_path: /admin/login
+                check_path: /admin/login
+                target_path_parameter: /admin/start
+            logout:
+                path:   /admin/logout
+                target: /admin/
+        main:
+            pattern: ^/
+            http_basic: ~
+            provider: user_entity
+            anonymous: ~
+            form_login:
+                login_path: /login
+                check_path: /login
+                default_target_path: /user/account
+            logout:
+                path:   /logout
+                target: /
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_REDAKTOR
+    access_control:
+        - { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/enable_user, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/new_password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/reset_password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/regulations, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/google_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/fb_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/fb_callback, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/fb_register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/privacy_policy, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user, roles: ROLE_USER }
+        - { path: ^/invest, roles: ROLE_USER }
+        - { path: ^/admin/config, roles: ROLE_ADMIN }
+        - { path: ^/admin/user, roles: ROLE_ADMIN }
+        - { path: ^/admin/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin/contact, roles: ROLE_ADMIN }
+        - { path: ^/admin/suscriber, roles: ROLE_ADMIN }
+        - { path: ^/admin/comment, roles: ROLE_ADMIN }
+        - { path: ^/admin/social, roles: ROLE_ADMIN }
+        - { path: ^/admin/recruitment, roles: ROLE_ADMIN }
+        - { path: ^/admin/recruitment_status, roles: ROLE_ADMIN }
+        - { path: ^/admin/recruitment_user_status, roles: ROLE_ADMIN }
+        - { path: ^/admin/realization, roles: ROLE_ADMIN }
+        - { path: ^/admin/menu, roles: ROLE_ADMIN }
+        - { path: ^/admin/newsletter, roles: ROLE_ADMIN }
+        - { path: ^/admin/email_queue, roles: ROLE_ADMIN }
+        - { path: ^/admin/opinions, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_REDAKTOR }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+        App\Entity\Admin:
+            algorithm: bcrypt
+

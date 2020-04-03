@@ -1,0 +1,30 @@
+<div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
+                <h2>{{ moduleName }}</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="packages">
+                {% for package in zbiorka.pakiety %}
+                    <div class="col-sm-12 col-md-6 padding-5">
+                        <div class="pakiet">
+                            <div class="row">
+                            <div class="col-sm-12 col-md-4 packageImage">
+                                <img src="{{ asset(package.image) }}" class="package-image img-responsive"/>
+                            </div>
+                            <div class="col-sm-12 col-md-8 packageContent">
+                                <div class="package-content">
+                                    {{ package.zawartosc|raw }}
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

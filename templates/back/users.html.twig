@@ -1,0 +1,75 @@
+{% extends 'back/base.html.twig' %}
+
+{% block body %}
+
+    {% include 'back/leftPanel.html.twig' %}
+
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        {% include 'back/header.html.twig' %}
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Użytkownicy - Lista</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li class="active"><a href="{{ path('admin_users') }}">Użytkownicy</a></li>
+                        </ol>
+                        <div class="page-header float-right">
+                            <a href="{{ path('admin_user_new') }}"><i class="fa fa-user-plus text-dark"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% include 'back/flashMessages.html.twig' %}
+
+        <div class="content mt-3">
+            <div class="animated fade-in">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Imię i Nazwisko</th>
+                            <th>Email</th>
+                            <th>Rola</th>
+                            <th>Aktywowany</th>
+                            <th>Usuń</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td><a href="{{ path('admin_user_edit',{ 'id':user.id }) }}">{{ user.firstName }} {{ user.lastName }}</a></td>
+                                <td>{{ user.email }}</td>
+                                <td>{% for role in user.roles %}{{ role }} {% endfor %}</td>
+                                {% if user.isActive == 1 %}
+                                    <td><a href="{{ path('admin_user_disable', { 'id':user.id,'status':0 }) }}" class="btn btn-warning">Dezaktywuj</a></td>
+                                {% else %}
+                                    <td><a href="{{ path('admin_user_disable', { 'id':user.id,'status':1 }) }}" class="btn btn-success">Aktywuj</a></td>
+                                {% endif %}
+                                <td><a href="{{ path('admin_user_delete', { 'id':user.id }) }}" class="btn btn-danger">Usuń</a></td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+{% endblock %}
+

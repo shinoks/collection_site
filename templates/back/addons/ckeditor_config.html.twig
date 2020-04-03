@@ -1,0 +1,62 @@
+
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script>
+    CKEDITOR.stylesSet.add( 'my_style', [
+        // Block-level styles
+        { name: 'PUSTY', element: 'p', attributes: { 'class': '' } },
+        { name: 'PUSTY2', element: 'span', attributes: { 'class': '' } },
+        { name: 'h1', element: 'h1'},
+        { name: 'h2', element: 'h2'},
+        { name: 'h3' , element: 'h3'},
+        { name: 'h4' , element: 'h4'},
+        { name: 'h5' , element: 'h5'},
+        { name: 'Szary krawędź lewa', element: 'p', attributes: { 'class': 'p-grey-border-left' } },
+        { name: 'Szary prostokąt zaokrąglony', element: 'p', attributes: { 'class': 'p-grey-rounded-rectangle' } },
+        { name: 'Pomarańczowy prostokąt zaokrąglony', element: 'p', attributes: { 'class': 'p-orange-rounded-rectangle' } },
+        { name: 'Zielony prostokąt zaokrąglony', element: 'p', attributes: { 'class': 'p-green-rounded-rectangle' } },
+        { name: 'Czerwony prostokąt zaokrąglony', element: 'p', attributes: { 'class': 'p-red-rounded-rectangle' } },
+
+        { name: 'Lista niest.', element: 'ul', attributes: { 'class': 'ul-squares-grey-violet' } },
+        { name: 'Niebieskie kropki.', element: 'ul', attributes: { 'class': 'ul-blue-dots' } },
+        { name: 'Niebieskie okrąglone.', element: 'ol', attributes: { 'class': 'list-type1' } },
+        { name: 'Szare okrąglone.', element: 'ol', attributes: { 'class': 'list-type1 grey-li' } },
+        { name: 'Czerwone okrąglone.', element: 'ol', attributes: { 'class': 'list-type1 red-li' } },
+        { name: 'Pomarańczowe okrąglone.', element: 'ol', attributes: { 'class': 'list-type1 orange-li' } },
+        { name: 'Zielone okrąglone.', element: 'ol', attributes: { 'class': 'list-type1 green-li' } },
+        { name: 'Niebieski list.', element: 'ol', attributes: { 'class': 'list-type3' } },
+        { name: 'Szary list.', element: 'ol', attributes: { 'class': 'list-type3 grey-li' } },
+        { name: 'Pomarańczowy list.', element: 'ol', attributes: { 'class': 'list-type3 orange-li' } },
+        { name: 'Czerwony list.', element: 'ol', attributes: { 'class': 'list-type3 red-li' } },
+        { name: 'Zielony list.', element: 'ol', attributes: { 'class': 'list-type3 green-li' } },
+        { name: 'Niebieski list. kwadrat', element: 'ol', attributes: { 'class': 'square-list' } },
+        { name: 'Szary list. kwadrat', element: 'ol', attributes: { 'class': 'square-list grey-li' } },
+        { name: 'Pomarańczowy list. kwadrat', element: 'ol', attributes: { 'class': 'square-list orange-li' } },
+        { name: 'Czerwony list. kwadrat', element: 'ol', attributes: { 'class': 'square-list red-li' } },
+        { name: 'Zielony list. kwadrat', element: 'ol', attributes: { 'class': 'square-list green-li' } },
+
+        // Inline styles
+        { name: 'Zaokraglony obrazek', element: 'img', attributes: { 'class': 'img-rounded' } },
+        { name: 'Okrągły obrazek', element: 'img', attributes: { 'class': 'img-circle' } },
+        { name: 'Miniatura obrazek', element: 'img', attributes: { 'class': 'img-thumbnail' } },
+
+        { name: 'Fioletowy przycisk', element: 'span', attributes: { 'class': 'p-button-violet' } },
+        { name: 'Czerwony przycisk', element: 'span', attributes: { 'class': 'p-button-red' } },
+        { name: 'Pomarańczowy przycisk', element: 'span', attributes: { 'class': 'p-button-orange' } },
+        { name: 'Zielony przycisk', element: 'span', attributes: { 'class': 'p-button-green' } },
+        { name: 'H3 header - niebieski', element: 'p', attributes: { 'class': 'h3-header' } },
+        { name: 'H3 header - pomarańczowy', element: 'p', attributes: { 'class': 'h3-header-orange' } },
+        { name: 'H3 header - czerwony', element: 'p', attributes: { 'class': 'h3-header-red' } },
+        { name: 'H3 header - zielony', element: 'p', attributes: { 'class': 'h3-header-green' } },
+        { name: 'Marker: Yellow', element: 'span', styles: { 'background-color': 'Yellow' } }
+    ] );
+    CKEDITOR.config.stylesSet = 'my_style';
+</script>
+<script>
+    function CkEditorURLTransfer(url) {
+        //  window.opener.CKEDITOR.tools.callFunction(1, url);
+        window.close();
+        window.parent.CKEDITOR.tools.callFunction(1, url, '');
+        $('#cke_111_textInput').val(url);
+
+    }
+</script>

@@ -1,0 +1,102 @@
+parameters:
+    locale: pl
+    site_url: '%env(SITE_URL)%'
+    google_client_id: '%env(GOOGLE_CLIENT_ID)%'
+    google_client_secret: '%env(GOOGLE_CLIENT_SECRET)%'
+    facebook_app_id: '%env(FACEBOOK_APP_ID)%'
+    facebook_app_secret: '%env(FACEBOOK_APP_SECRET)%'
+    public_dir: 'public_html'
+    file_directory: '../%public_dir%/uploads/files'
+    image_directory: 'uploads/files'
+    number_of_latest_news: 3
+    recaptcha_secret_key: '%env(RECAPTCHA_SECRET_KEY)%'
+    recaptcha_public_key: '%env(RECAPTCHA_PUBLIC_KEY)%'
+    user_image_directory: 'uploads/user_images'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    App\Service\FileUploader:
+        arguments:
+            $targetDir: '%file_directory%'
+            $imageDir: '%image_directory%'
+
+    App\EventListener\ImageUploadListener:
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+
+    App\Service\Config:
+        arguments: ['@doctrine.orm.entity_manager']
+
+    App\Service\News:
+        arguments: ['@doctrine.orm.entity_manager']
+
+    App\Service\Menu:
+        arguments: ['@doctrine.orm.entity_manager']
+
+    App\Service\Social:
+        arguments: ['@doctrine.orm.entity_manager']
+
+    App\Service\Article:
+        arguments: ['@doctrine.orm.entity_manager']
+
+    App\Service\Przelewy24:
+        arguments: []
+
+    App\Service\GoogleAuthenticator:
+        arguments:
+            $siteUrl: '%site_url%'
+            $googleClientId: '%google_client_id%'
+            $googleClientSecret: '%google_client_secret%'
+
+    App\Service\Facebook:
+        arguments:
+            $siteUrl: '%site_url%'
+            $facebookAppId: '%facebook_app_id%'
+            $facebookAppSecret: '%facebook_app_secret%'
+
+    App\Utils\MailManager:
+        arguments: ['@doctrine.orm.entity_manager']
+
+    App\Utils\InfoCount:
+        arguments: ['@doctrine.orm.entity_manager']
+
+    App\Utils\RecaptchaUtils:
+        arguments:
+          $recaptchaSecretKey: '%recaptcha_secret_key%'
+          $recaptchaPublicKey: '%recaptcha_public_key%'
+
+artgris_file_manager:
+    web_dir: "%public_dir%"
+    conf:
+        default:
+            dir: "%file_directory%"
+
+knp_paginator:
+    page_range: 5                       # number of links showed in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links to page 4, 5, 6)
+    default_options:
+        page_name: page                 # page query parameter name
+        sort_field_name: sort           # sort field query parameter name
+        sort_direction_name: direction  # sort direction query parameter name
+        distinct: true                  # ensure distinct results, useful when ORM queries are using GROUP BY statements
+        filter_field_name: filterField  # filter field query parameter name
+        filter_value_name: filterValue  # filter value query paameter name
+    template:
+        pagination: '@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig'     # sliding pagination controls template
+        sortable: '@KnpPaginator/Pagination/sortable_link.html.twig' # sort link template
+        filtration: '@KnpPaginator/Pagination/filtration.html.twig'  # filters template
+
+white_october_tcpdf:
+    class: 'App\Utils\Tcpdf'

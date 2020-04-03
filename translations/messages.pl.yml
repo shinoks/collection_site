@@ -1,0 +1,270 @@
+username: Użytkownik
+email: Email
+first_name: Imię
+last_name: Nazwisko
+login: Logowanie
+logout: Wyloguj
+register: Zarejestruj się
+do_not_have_an_account: Nie posiadasz konta?
+account: Konto
+youre_logged_on: Jesteś zalogowany jako
+user_registration: Rejestracja użytkownika
+is_active: Aktywny
+home: Start
+page: Strona
+read_more: Czytaj więcej
+contact: Kontakt
+about_us: O nas
+dashboard: Panel startowy
+config: Konfiguracja
+users: Użytkownicy
+admins: Admini
+edit_config: Edycja konfiguracji
+title: Tytuł
+phone: Telefon
+address: Adres
+page_title: Tytuł strony
+yours_account: Twoje konto
+name: Nazwa
+description: Opis
+edit: Edytuj
+short_text: Krótki opis
+text: Opis
+category: Kategoria
+main_image: Obrazek główny
+message: Wiadomość
+contact_form: Formularz kontaktowy
+contact_forms: Formularze kontaktowe
+user: Użytkownik
+sender: Nadawca
+post_date: Data wysłania
+delete: Usuń
+user_not_logged: Użytkownik niezalogowany
+user_data: Dane użytkownika
+reply: Odpowiedz
+event: Wydarzenie
+event_name: Nazwa wydarzenia
+nickname: Przydomek
+comment: Komentarz
+comments: Komentarze
+offer_list: Lista ofert
+loan:
+    ammount: Kwota pożyczki
+make_an_offer: Złóż ofertę
+make_an_loan_offer: Złóż ofertę pożyczki
+make_an_offer_for_recruitment: Złóż ofertę na inwestycji
+make_a_loan_offer: Złóż ofertę pożyczki
+ammount: Kwota
+on_period: Na okres
+loan_settlement: Sposób rozliczania odsetek
+offerts: Oferty
+offerts_list: Lista Ofert
+created: Utworzono
+offer_number: Numer oferty
+interest: Odsetki kapitałowe w stosunku rocznym
+period: Czas trwania
+settlement: Spłata odsetek
+month: msc
+status: Status
+investor_zone: Strefa inwestora
+sublease_zone: Strefa inwestycji
+realizations: Realizacje
+news: Aktualności
+proposal: Wniosek
+show: Pokaż
+offer: Oferta
+offer_statuses: Statusy ofert
+offer_status: Status oferty
+our_customer_said: Recenzje klientów
+you_can_trust_us: Możesz nam zaufać
+registered_investors: Zarejestrowani inwestorzy
+offerts_in_stock: Liczba złożonych ofert
+offerts_ammount: Kwota ofert
+add_offer: Dodaj ofertę
+completed_offers: Zakończone oferty
+looking_for_investment: Szukasz inwestycji
+looking_for_investor: Szukasz inwestora
+questions: Pytania
+call_us: Zadzwoń do Nas
+links: Linki
+selling_price: Kwota sprzedaży
+currency: Waluta
+volume: Rynek
+city: Miasto
+rooms: Pokoje
+default: Podstawowe
+basic: Podstawowe
+media: Media
+security: Bezpieczeństwo
+additional_info: Dodatkowe informacje
+add_another_value: Dodaj kolejną wartość
+realizations_list: Lista realizacji
+realization_new: Nowa realizacja
+realization_edit: Edycja realizacji
+recommended: Polecane
+image_miniature: Miniaturka obrazku
+additional_images: Dodatkowe obrazki
+select-all: Zaznacz wszystko
+yardage: Metraż
+latest_added_realizations: Ostatnie realizacje
+cant_decide: Nie możesz wybrać?
+all_realizations: Wszystkie realizacje
+write_to_us: Napisz do nas
+send: Wyślij
+faq: Faq
+choose_some_option: Wybierz opcję
+type: Typ
+parent: Rodzic
+article: Artykuł
+regulations: Regulamin
+marketing_regulations: Zgoda marketingowa
+ammount_of_profits: Kwota zysków
+knowledge_zone: Strefa wiedzy
+subscribers: Użytkownicy newslettera
+subscriber: Użytkownik newslettera
+system: System
+pesel: Pesel
+zip_code: Kod pocztowy
+id_number: Nr dowodu osobistego
+birth_date: Data urodzenia
+module: Moduł
+modules: Moduły
+content: Zawartość
+template: Szablon
+menu: Menu
+menu_list: Lista menu
+href: Link
+logo_for_main_site: Logo dla strony głównej
+logo_for_admin_site: Logo dla strony admina
+keywords: Tagi strony
+in_footer: W dolnym menu
+in_bottom: W stopce menu
+footer_menu: Dolne menu
+bottom_menu: Menu w stopce
+social_media: Media społecznościowe
+html_class: Klasa html
+regulations_url: Adres regulaminu
+privacy_policy_url: Adres polityki prywatności
+privacy_policy: Polityka prywatności
+i_have_accepted_regulations: Akceptuję regulamin
+recruitment: Inwestycja
+recruitment_name: Nazwa inwestycji
+recruitment_localization: Lokalizacja
+recruitments: Inwestycje
+recruitment_status: Status inwestycji
+recruitments_list: Inwestycje
+recruitment_edit: Edycja inwestycji
+recruitment_number: Number inwestycji
+add_recruitment: Dodaj inwestycje
+recruitment_status_list: Statusy inwestycji
+recruitments_user_offer: Oferty do inwestycji
+recruitment_user_edit: Edycja oferty
+recruitment_user_statuses: Statusy dla ofert
+recruitment_user_status_edit: Edycja statusu oferty do inwestycji
+recruitment_user_created: Data złożenia oferty
+recruitment_user_not_accepted: Oferta nie zaakceptowana
+recruitment_user_accepted: Oferta zaakceptowana
+recruitment_user_status: Status ofert
+agreement:
+    agreement: Umowa
+    conditions: Warunki oferty pożyczki
+    download_agreement: Pobierz umowę
+    not_available: Umowa niedostępna
+is_fv_generated: Czy fv ma być generowana
+is_fv_mailed: Czy fv na email
+recruitment_user: Oferta inwestycji
+recruitment_users: Oferty inwestycji
+recruitment_status_edit: Edycja oferty inwestycji
+edit_recruitment_user: Edycja oferty inwestycji
+add_recruitment_status: Dodaj status inwestycji
+new_offer_status: Nowy status oferty do inwestycji
+number: Number
+collected_amount: Zgromadzone środki
+declared_amount: Zadeklarowana kwota
+amount_of_days: Ilość dni
+amount_of_interest: Kwota odsetek
+payed_amount: Kwota wpłacona
+payment_time:
+payed_date: Data wpłaty
+end_date: Data zakończenia
+desired_amount: Pożądana kwota
+investment_period: Czas inwestycji
+investment_period_max: Maksymalny czas zwrotu pożyczki
+investment_type: Typ inwestycji
+bank_account: Nr konta
+bank_account_number: Numer konta bankowego
+click_for_detail: Wejdź w szczegóły
+is_visible_to_users: Widoczny dla użytkowników
+is_mailed_to_admin: Wysyłany do adminów ?
+is_mailed_to_users: Wysyłany do użytkowników ?
+is_disabling: Czy wyłącza?
+mail_admin_template: Szablon maila do adminów
+mail_users_template: Szablon maila do użytkowników
+footer: Stopka
+gender: Pan/Pani
+send_date: Data wysłania
+password:
+    password: Hasło
+    dont_remember: Nie pamiętasz hasła?
+    new: Nowe hasło
+    reset: Resetuj hasło
+    repeat: Powtórz hasło
+input:
+    default: Podstawowy
+table:
+    name: Nazwa
+    data: Data
+    size: Wielkość
+    dimension: Wymiary
+    actions: Akcje
+size:
+    kb: Kb
+    mb: Mb
+file:
+    add:
+        success: Plik dodany poprawnie
+button:
+    save: Zapisz
+    tree: Drzewo
+    refresh: Odśwież
+    cancle: Anuluj
+    add:
+        files: Plik
+        folder: Folder
+    delete:
+        selected: Usuń wybrane
+        action: Akcje
+newsletter:
+    newsletter: Newsletter
+    newsletters: Newslettery
+    new: Nowy newsletter
+    list: Lista newsletterów
+    send: Wyślij newsletter
+    add_to_queue: Dodaj do kolejki wysyłki
+email_queue:
+    emails_queue: Kolejka maili do wysłania
+opinions:
+    opinions: Opinie
+    nickname: Imię i nazwisko lub pseudonim
+    title: Tytuł
+    text: Treść
+    add: Zostaw nam swoją opinię
+    list: Lista opinii
+    edit: Edycja opinii
+main_menu: Menu główne
+main_menu_color: Dodatkowe menu głowne (kolor)
+invest:
+    invest: Zainwestuj
+actual_emmision: Aktualna emisja
+show_creation_date: Pokaż datę utworzenia
+column_number_on_front_page: Liczba kolumn na stronie startowej (max 12)
+order:
+    order: Kolejność
+collection:
+    ammount: Kwota zbiórki
+    capital_raised: Zebrany kapitał
+    days_left: Pozostały czas
+    investors: Inwestorzy
+    packages: Pakiety
+    minimum_action_amount: Minimalna ilość akcji
+    maximum_action_amount: Maksymalna ilość akcji

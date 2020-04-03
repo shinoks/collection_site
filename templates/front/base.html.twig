@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125270094-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125270094-1');
+</script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ config.config.title }} {% block title %}{% endblock %}</title>
+    <meta name="description" content="BS Projekt">
+    <meta name="keyword" content="BS Projekt , akcjonariusze">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/fontello.css') }}">
+        <link href="{{ asset('fonts/icon-7-stroke/css/pe-icon-7-stroke.css') }}" rel="stylesheet">
+        <link href="{{ asset('fonts/icon-7-stroke/css/helper.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/animate.css') }}" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/icheck.min_all.css') }}">
+ <!--       <link rel="stylesheet" href="{{ asset('css/price-range.css') }}"> -->
+        <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.theme.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.transitions.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    {% endblock %}
+    <script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '239624987172963');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=239624987172963&ev=PageView&noscript=1"
+        /></noscript>
+    <!-- End Facebook Pixel Code -->
+    {% block head %}
+    {% endblock %}
+</head>
+<body style="width: 100vw; overflow-x: hidden">
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v4.0&appId=2208316992749136&autoLogAppEvents=1"></script>
+{% include 'front/addons/header.html.twig' %}
+
+{% set menus = menu.getMenu %}
+{% set activeMenu = menu.getActiveMenu %}
+{% for module in menu.modulesForActivePage.top %}
+    {% block top %}
+        {% set content = module.content %}
+        <a href="#" class="anchor"  id="module-{{ module.id }}"></a>
+        {%  include 'front/modules/' ~ module.template %}
+    {% endblock %}
+{% endfor %}
+
+{% block body %}{% endblock %}
+
+{% for module in menu.modulesForActivePage.bottom %}
+    {% block bottom %}
+        {% set content = module.content %}
+        <a href="#" class="anchor" id="module-{{ module.id }}"></a>
+        {%  include 'front/modules/' ~ module.template %}
+    {% endblock %}
+{% endfor %}
+
+{% include 'front/addons/footer.html.twig' %}
+
+
+{% block javascripts %}
+    <script src="{{ asset('js/modernizr-2.6.2.min.js') }}"></script>
+
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-hover-dropdown.js') }}"></script>
+
+    <script src="{{ asset('js/easypiechart.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.easypiechart.min.js') }}"></script>
+
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/wow.js') }}"></script>
+
+    <script src="{{ asset('js/icheck.min.js') }}"></script>
+  <!--  <script src="{{ asset('js/price-range.js') }}"></script> -->
+
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $(window).scroll(function(){
+                if ($(this).scrollTop() > 30) {
+                    $('#navi').addClass('fixed_menu');
+                    $('#navi2').removeClass('hidden');
+                } else {
+                    $('#navi').removeClass('fixed_menu');
+                    $('#navi2').addClass('hidden');
+                }
+            });
+
+        });
+        $(window).load(function(){
+            if ($(window).scrollTop() > 30) {
+                $('#navi').addClass('fixed_menu');
+                $('#navi2').removeClass('hidden');
+            }});
+    </script>
+    <script>
+        function initMap() {
+            var uluru = {lat: 50.045653, lng: 18.695813};
+            var styles = [{"featureType": "landscape", "stylers": [{"saturation": -100}, {"lightness": 65}, {"visibility": "on"}]}, {"featureType": "poi", "stylers": [{"saturation": -100}, {"lightness": 51}, {"visibility": "simplified"}]}, {"featureType": "road.highway", "stylers": [{"saturation": -100}, {"visibility": "simplified"}]}, {"featureType": "road.arterial", "stylers": [{"saturation": -100}, {"lightness": 30}, {"visibility": "on"}]}, {"featureType": "road.local", "stylers": [{"saturation": -100}, {"lightness": 40}, {"visibility": "on"}]}, {"featureType": "transit", "stylers": [{"saturation": -100}, {"visibility": "simplified"}]}, {"featureType": "administrative.province", "stylers": [{"visibility": "off"}]}, {"featureType": "water", "elementType": "labels", "stylers": [{"visibility": "on"}, {"lightness": -25}, {"saturation": -100}]}, {"featureType": "water", "elementType": "geometry", "stylers": [{"hue": "#ffff00"}, {"lightness": -25}, {"saturation": -97}]}];
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 9,
+                center: uluru,
+                styles: styles
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqAY5JVppReppK5gRNjFzDNV9PCjRiMUk&callback=initMap">
+    </script>
+    <script>
+        $(function() {
+            if( document.cookie.indexOf( "runOnce" ) < 0 ) {
+                $( "#myModal" ).fadeIn();
+                $( "#myModal" ).addClass('in');
+            }
+            $("#modal_button_cookies").click(function(){
+                    $( "#myModal" ).removeClass('in');
+                    $( "#myModal" ).fadeOut();
+                    document.cookie = "runOnce=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
+                }
+            );
+        })
+    </script>
+
+{% endblock %}
+
+</body>
+</html>

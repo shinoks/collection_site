@@ -1,0 +1,16 @@
+<div class="slider-area">
+    <div class="slider">
+        <div id="bg-slider" class="owl-carousel owl-theme">
+            {% for var in module.variable %}
+                <div class="item"><img src="{{ asset(var) }}"></div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="slider-content">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+            </div>
+        </div>
+    </div>
+</div>
+{{ content }}

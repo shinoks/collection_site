@@ -1,0 +1,27 @@
+admin_pakiety:
+    path: /
+    controller: App\Controller\Admin\PakietController::index
+
+admin_pakiety_index:
+    path: /paginator
+    controller: App\Controller\Admin\PakietController::index
+
+admin_pakiet_new:
+    path: /new
+    controller: App\Controller\Admin\PakietController::new
+
+admin_pakiet_show:
+    path: /{id}
+    controller: App\Controller\Admin\PakietController::show
+
+admin_pakiet_edit:
+    path: /edit/{id}
+    controller: App\Controller\Admin\PakietController::edit
+
+admin_pakiet_disable:
+    path: /disable/{id}/{status}
+    controller: App\Controller\Admin\PakietController::disable
+
+admin_pakiet_delete:
+    path: /delete/{id}
+    controller: App\Controller\Admin\PakietController::delete

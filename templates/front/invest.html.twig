@@ -1,0 +1,189 @@
+{% set title = 'invest.invest'|trans %}
+{% extends 'front/base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="{{ asset('js/bootstrap-slider.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{  parent()  }}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-slider.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <script type="text/javascript">
+        var RecaptchaOptions = {
+            lang : 'pl'
+        };
+    </script>
+    <script>
+        $(function() {
+        })
+    </script>
+    <script>
+        let pakiety = [];
+        let mySlider2 = $("#slider").bootstrapSlider();
+        {% for package in zbiorka.pakiety %}
+        pakiety.push({'id':{{ package.id }},'iloscAkcji':{{ package.iloscAkcji }}});
+        {% endfor %}
+        let cenaAkcji = {{cenaAkcji}};
+        $( function() {
+            changePakiet(pakiety,{{ kwotaStart }});
+        });
+        $('#kwotaAkcji').html(cenaAkcji*{{ kwotaStart }}+' zł');
+
+        $('#iloscAkcji').val({{kwotaStart}});
+            $('.kwotaAkcji').click(function(){
+                $('.kwotaAkcji').each(function(){
+                    $(this).removeClass('active');
+                });
+                $(this).parent().addClass('active');
+                changePakiet(pakiety,$(this).attr('value'));
+            });
+        $('#iloscAkcji').change(function(){
+            if($(this).val()<{{ kwotaMin }}){
+                changePakiet(pakiety,{{kwotaMin}});
+                $('#infoAkcje').addClass('alert alert-danger').html('{{ 'collection.minimum_action_amount'|trans }}: {{ kwotaMin }}').show();
+            }else if($(this).val()>{{ kwotaBrakujaca }}){
+                changePakiet(pakiety,{{kwotaBrakujaca}});
+                $('#infoAkcje').addClass('alert alert-danger').html('{{ 'collection.maximum_action_amount'|trans }}: {{ kwotaBrakujaca }}').show();
+            }else{
+                $('#infoAkcje').hide();
+                $('#kwotaAkcji').html($(this).val()*cenaAkcji+' zł');
+                changePakiet(pakiety,$(this).val());
+            }
+        });
+        mySlider2.change(function(){
+            changePakiet(pakiety,$(this).val());
+        });
+
+        function changePakiet(pakiety,val) {
+            $('#iloscAkcji').val(val);
+            mySlider2.bootstrapSlider('setValue', val);
+            $('#kwotaAkcji').html(val*cenaAkcji+' zł');
+            var length = pakiety.length;
+            var start = 0;
+            var end = 0;
+            for( var i = 0;i<length;i++){
+                if(length > 0){
+                    end = pakiety[0].iloscAkcji;
+                }else{
+                    end = 0;
+                }
+                let c =i+1;
+                start = pakiety[i].iloscAkcji;
+                if(length === i-1) {
+                    end = 999999999999999;
+                }else{
+                    if(pakiety[c] != null){
+                        end = pakiety[c].iloscAkcji;
+                    }
+                }
+                if(val >= start && val < end){
+                    $('.package-content').each(function(){
+                        $(this).hide();
+                    });
+                    $('#package-'+pakiety[i].id).show();
+                }else if(val < pakiety[0].iloscAkcji){
+                    $('.package-content').each(function(){
+                        $(this).hide();
+                    });
+                }
+            }
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+    {% include 'front/addons/top.html.twig' %}
+
+    <div class="content-area blog-page padding-top-40" style="background-color: #FCFCFC; padding-bottom: 55px;">
+        <div class="container">
+                <div class="blog-lst col-md-12 pl0">
+                        <div class="well text-center">
+                            <h3>Zebrano już:</h3>
+                            <h5>{{ zbiorka.kwotaZebrana }} zł z  {{ zbiorka.kwotaZbiorki }}</h5>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{procentZebrany}}" aria-valuemin="0" aria-valuemax="100" style="width: {{procentZebrany}}%;">
+                                    {{procentZebrany}}%
+                                </div>
+                            </div>
+                            <form action="{{ path('front_invest_pay') }}" class="form" method="POST">
+                                <div class="col-md-4">
+                                    <h3>Podaj ilość akcji:</h3>
+
+                                    <div id="infoAkcje" ></div>
+                                    <input
+                                            type="text"
+                                            id="slider"
+                                            name="somename"
+                                            data-provide="slider"
+                                            data-slider-min="{{kwotaMin}}"
+                                            data-slider-max="{{kwotaBrakujaca}}"
+                                            data-slider-step="{{kwotaKrok}}"
+                                            data-slider-value="{{kwotaStart}}"
+                                            data-slider-tooltip="hide"
+                                    >
+                                    <input type="number" class="form-control" id="iloscAkcji" name="iloscAkcji" value="1" min="{{ kwotaMin }}" max="{{ kwotaBrakujaca }}"/>
+                                    akcji za:
+                                    <p class="kwota-akcji" id="kwotaAkcji">0 zł</p>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="g-recaptcha" data-sitekey="6LfGDdMUAAAAAHTMf-fcioOTHfDK7akhLcGchMhy"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            {% for package in zbiorka.pakiety %}
+                                                <div class="package-content" id="package-{{ package.id }}" style="display: none">
+                                                    {{ package.zawartosc|raw }}
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8  text-center">
+                                    <h3>lub wybierz pakiet:</h3>
+                                    {% set i = 0 %}
+                                    {% set dataEnd = 0 %}
+                                    {% for package in zbiorka.pakiety %}
+                                        {% set cenaZaPakiet = package.iloscAkcji * cenaAkcji %}
+                                        {% if kwotaBrakujaca > cenaZaPakiet %}
+                                            <div class="col-md-4">
+                                                <a href="javascript:;" class="kwotaAkcji" data-toggle="kwotaAkcji" data-start="" data-end="" data-id="{{ package.id }}" value="{{package.iloscAkcji}}">
+                                                    <img src="{{ asset(package.image) }}" class="package-image img-responsive "/>
+                                                </a>
+                                            </div>
+                                         {% else %}
+
+                                        {% endif %}
+                                        {% set dataEnd = package.iloscAkcji %}
+                                    {% endfor %}
+                                </div>
+                                <div class="col-md-12 text-center"> </div>
+                                <input type="hidden" value="{{ path('front_invest_pay') }}" name="_target_path"/>
+                                <div class="row">
+
+<br/>
+                                <input type="submit" class="btn btn-default btn-block" value="DALEJ"/>
+
+                            </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

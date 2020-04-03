@@ -1,0 +1,99 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::indexPage
+index_start:
+    path: /index
+    controller: App\Controller\DefaultController::startPage
+contact:
+    path: /contact
+    controller: App\Controller\DefaultController::contactPage
+regulations:
+    path: /regulations
+    controller: App\Controller\DefaultController::regulationsPage
+privacy_policy:
+    path: /privacy_policy
+    controller: App\Controller\DefaultController::privacyPolicyPage
+login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+logout:
+    path: /logout
+register:
+    path: /register
+    controller: App\Controller\UserController::register
+enable_user:
+    path: /enable_user/{h}
+    controller: App\Controller\UserController::enable
+reset_password:
+    path: /reset_password
+    controller: App\Controller\UserController::resetPassword
+new_password:
+    path: /new_password/{h}
+    controller: App\Controller\UserController::newPassword
+google_login:
+    path: /google_login
+    controller: App\Controller\UserController::googleLogin
+fb_login:
+    path: /fb_login
+    controller: App\Controller\UserController::fbLogin
+fb_callback:
+    path: /fb_callback
+    controller: App\Controller\UserController::fbCallback
+    schemes: [https]
+fb_register:
+    path: /fb_register
+    controller: App\Controller\UserController::fbRegister
+    schemes: [https]
+enable_subscriber:
+    path: /enable_subscriber/{h}
+    controller: App\Controller\SubscriberController::enable
+    schemes: [https]
+
+front_user_resource:
+    resource: "front/user.yml"
+    prefix: /user
+
+front_invest:
+    resource: "front/invest.yml"
+    prefix: /invest
+
+front_offer_resource:
+    resource: "front/offer.yml"
+    prefix: /offer
+
+front_realization_resource:
+    resource: "front/realization.yml"
+    prefix: /realization
+front_realizations:
+    path: /realization
+    controller: App\Controller\RealizationController::index
+
+front_news_resource:
+    resource: "front/news.yml"
+    prefix: /news
+front_news:
+    path: /news
+    controller: App\Controller\NewsController::index
+
+front_investor_zone_resource:
+    resource: "front/investor_zone.yml"
+    prefix: /investor_zone
+front_investor_zone:
+    path: /investor_zone
+    controller: App\Controller\InvestorZoneController::index
+
+front_subscribe:
+    resource: "front/subscriber.yml"
+    prefix: /subscriber
+
+front_opinions:
+    resource: "front/opinions.yml"
+    prefix: /opinions
+
+front_menu_resource:
+    resource: "front/menu.yml"
+
+front_article_resource:
+    resource: "front/article.yml"
+    prefix: /article
+

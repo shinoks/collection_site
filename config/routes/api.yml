@@ -1,0 +1,11 @@
+zip_code:
+    resource: "api/zip_code.yml"
+    prefix: /zip_code
+
+email_queue:
+    resource: "api/email_queue.yml"
+    prefix: /email_queue
+
+temp_order:
+    resource: "api/temp_order.yml"
+    prefix: /temp_order

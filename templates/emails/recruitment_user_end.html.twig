@@ -1,0 +1,24 @@
+{% extends 'emails/base.html.twig' %}
+
+{% block body %}
+    Witaj user<br/><br/>
+
+    Właśnie zakończyliśmy i inwestycję. Dziękujemy za zaufanie jakim nas obdarzyłeś<br/>
+
+
+    Twoja umowa pożyczki została zakończona a wpłacony przez Ciebie kapitał wraz z odsetkami został przekazany na <a href="{{ path('front_user_account') }}">Twoje konto</a>.<br/>
+
+
+    Kwota kapitału {{ recruitment.payedAmount }} zł<br/>
+
+
+    Kwota odsetek {{ recruitment.amountOfInterest }}  zł<br/>
+
+
+    Czas trwania inwestycji {{ recruitment.daysOfInvestment }}  dni<br/><br/>
+
+
+    <a href="{{ absolute_url(path('login')) }}">Zaloguj się</a> już teraz na swoim <a href="{{ absolute_url(path('login')) }}">koncie</a><br/>
+{% endblock %}
+
+

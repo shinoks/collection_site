@@ -1,0 +1,136 @@
+{% block text_widget %}
+    <div class="form-group">
+        {% set type = type|default('text') %}
+        <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    </div>
+{% endblock %}
+
+{% block integer_widget %}
+    <div class="form-group">
+        {% set type = type|default('number') %}
+        <div class="input-group">
+            <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        </div>
+    </div>
+{% endblock %}
+
+{% block tel_widget %}
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><b>+48 </b></span>
+            <input type="tel" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        </div>
+    </div>
+{% endblock %}
+
+{% block number_widget %}
+    <div class="form-group">
+        {% set type = type|default('number') %}
+        <div class="input-group">
+            <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        </div>
+    </div>
+{% endblock %}
+
+{% block percent_widget %}
+    <div class="form-group">
+        {% set type = type|default('percent') %}
+        <div class="form-group">
+            <div class="input-group">
+                <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+                <span class="input-group-addon"> %</span>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block money_widget %}
+    <div class="form-group">
+        {% set type = type|default('money') %}
+        <div class="form-group">
+            <div class="input-group">
+                <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+                <span class="input-group-addon"> zł</span>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block email_widget %}
+    <div class="form-group">
+        {% set type = type|default('email') %}
+        <div class="input-group">
+            <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        </div>
+    </div>
+{% endblock %}
+
+{% block password_widget %}
+    <div class="form-group">
+        {% set type = type|default('password') %}
+        <div class="input-group">
+            <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} placeholder="*********"/>
+        </div>
+    </div>
+{% endblock %}
+
+{% block textarea_widget %}
+    <div class="form-group">
+        <div class="input-group">
+            <textarea class="form-control" {{ block('widget_attributes') }}> {% if value is not empty %}{{ value }}{% endif %}</textarea>
+        </div>
+    </div>
+{% endblock %}
+
+{% block choice_widget %}
+    {% set type = type|default('checkbox') %}
+    <div class="form-group">
+        {% if multiple %}
+            {%- for child in form %}
+                    <label class="checkbox-inline">
+                        {{- form_widget(child) -}}
+                        {{- form_label(child, null, {translation_domain: choice_translation_domain}) -}}
+                    </label>
+            {% endfor -%}
+        {% else %}
+        <select class="form-control" {{ block('widget_attributes') }}>
+            {% if placeholder is not null and required is empty %}
+                <option value="">{{ 'choose_some_option'|trans }}</option>
+            {% endif %}
+            {%- if preferred_choices|length > 0 -%}
+                {% set options = preferred_choices %}
+                {{- block('choice_widget_options') -}}
+                {%- if choices|length > 0 and separator is not none -%}
+                    <option disabled="disabled">{{ separator }}</option>
+                {%- endif -%}
+            {%- endif -%}
+            {%- set options = choices -%}
+            {{- block('choice_widget_options') -}}
+        </select>
+
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+{% block file_widget %}
+    <div class="form-group">
+        {% set type = type|default('file') %}
+        <div class="input-group">
+            <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        </div>
+        {% if form.vars.data is not empty %}<img class="img-thumbnail" style="width:200px; height:200px;" src="{{ asset(form.vars.data) }}"/>{% endif %}
+    </div>
+{% endblock %}
+
+
+{% block submit_widget %}
+    <div class="form-group">
+        {% set type = type|default('submit') %}
+        <button class="btn btn-primary btn-sm" {{ block('button_attributes') }}>
+            <i class="fa fa-dot-circle-o"></i>
+            Zapisz
+        </button>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,120 @@
+{% set title = 'account'|trans %}
+{% extends 'front/base.html.twig' %}
+
+{% block body %}
+    {% include 'front/addons/top.html.twig' %}
+
+    <div class="content-area blog-page padding-top-40" style="background-color: #FCFCFC; padding-bottom: 55px;">
+        <div class="container">
+            <div class="row">
+                <div class="blog-lst col-md-12 pl0" style="display: table;">
+
+                    {% include 'front/addons/flashMessages.html.twig' %}
+                    <ul class="nav nav-tabs" style="display: inherit;margin:0 auto;text-transform: uppercase;font-size: 1.5em">
+                        <li class="active"><a data-toggle="tab" href="#home"><span style="font-size: 0.8em;" class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Aktualności</a></li>
+                        <li><a data-toggle="tab" href="#profil"><span style="font-size: 0.8em;" class="glyphicon glyphicon-cog" aria-hidden="true"></span> Profil</a></li>
+                        <li><a data-toggle="tab" href="#dane"><span style="font-size: 0.8em;" class="glyphicon glyphicon-user" aria-hidden="true"></span> Twoje dane</a></li>
+                        <li><a data-toggle="tab" href="#menu4"><span style="font-size: 0.8em;" class="glyphicon glyphicon-signal" aria-hidden="true"></span> Akcje</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade in active">
+                            <div class="well">
+                                <div class="row">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="profil" class="tab-pane fade">
+                            <div class="well">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <table class="table table-bordered">
+                                                <thead class="table-head">
+                                                <tr>
+                                                    <th>{{ 'first_name'|trans }}</th>
+                                                    <th>{{ 'last_name'|trans }}</th>
+                                                    <th>{{ 'birth_date'|trans }}</th>
+                                                    <th>{{ 'phone'|trans }}</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="table-content">
+                                                <tr>
+                                                    <td>{{ user.firstName }} </td>
+                                                    <td>{{ user.lastName }} </td>
+                                                    <td>{{ user.birthDate|date('d-m-Y') }} </td>
+                                                    <td>{{ user.phone }} </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <a class="btn btn-default btn-border" href="{{ path('front_user_account_edit') }}">{{ 'edit'|trans }}</a>
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            {% if user.userImage is defined and user.userImage is not empty %}
+                                                <img class="img-thumbnail" src="{{ user.userImage }}" alt="Avatar" style="width: 150px; height: 150px;">
+                                                <a class="btn-red btn" style="width: 150px" href="{{ path('front_user_account_delete_image') }}">USUŃ ZDJĘCIE</a>
+                                            {% else %}
+                                                <div class="img-thumbnail" style="width: 150px;height: 150px; background-color: #efefef;">
+                                                    <div class="alert alert-warning">
+                                                        Brak zdjęcia
+                                                    </div>
+
+                                                    {{ form_start(form) }}
+                                                    <label for="user_image_user_image" class="file-upload-label">
+                                                        <i class="fa fa-cloud-upload"></i> Wgraj Plik
+                                                    </label>
+                                                        {{ form_row(form.user_image) }}
+
+                                                    {{ form_end(form) }}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="dane" class="tab-pane fade">
+                            <div class="well">
+
+                            </div>
+                        </div>
+                        <div id="menu4" class="tab-pane fade">
+                            <div class="well">
+                                    {% if iloscAkcji is defined and iloscAkcji is not empty %}
+
+                                    {% else %}
+                                        <div class="text-center">
+                                            <div class="row">
+                                                <h5>Nie posiadasz żadnych akcji</h5>
+                                            </div>
+                                            <div class="row">
+                                                <a href="" class="btn-lg btn-red" style="display: block;">ZAINWESTUJ</a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                <div class="hidden-md hidden-lg">
+
+                                </div>
+                                <div class="hidden-sm hidden-xs">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('#wgraj_plik').on('click',function (a) {
+           $('#user_image_user_image').click();
+        });
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% endblock %}

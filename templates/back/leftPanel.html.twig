@@ -1,0 +1,184 @@
+<!-- Left Panel -->
+
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+
+        <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="./"><img src="{{ asset(config.config.logoAdmin) }}" alt="Logo"></a>
+            <a class="navbar-brand hidden" href="./"><img src="{{ asset(config.config.logoAdmin) }}" alt="Logo"></a>
+        </div>
+
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            {% if is_granted('ROLE_ADMIN') %}
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="{{ path('admin') }}"> <i class="menu-icon fa fa-dashboard"></i>{{ 'dashboard'|trans }} </a>
+                    </li>
+                    <h3 class="menu-title">{{ 'system'|trans }}</h3><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ 'system'|trans }}
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li class="">
+                                <a href="{{ path('admin_config') }}"> <i class="fa fa-cog"></i>{{ 'config'|trans }} </a>
+                            </li>
+                            <li class="">
+                                <a href="{{ path('admin_users') }}"> <i class="fa fa-users"></i>{{ 'users'|trans }} </a>
+                            </li>
+                            <li class="">
+                                <a href="{{ path('admin_admins') }}"> <i class="fa fa-users"></i>{{ 'admins'|trans }} </a>
+                            </li>
+                            <li class="">
+                                <a href="{{ path('admin_contacts') }}"> <i class="fa ti-email"></i>{{ 'contact_forms'|trans }} </a>
+                            </li>
+                            <li class="">
+                                <a href="{{ path('admin_subscribers') }}"> <i class="fa ti-email"></i>{{ 'subscribers'|trans }} </a>
+                            </li>
+                            <li class="">
+                                <a href="{{ path('admin_comments') }}"> <i class="fa ti-email"></i>{{ 'comments'|trans }} </a>
+                            </li>
+                            <li class="">
+                                <a href="{{ path('admin_socials') }}"> <i class="fa ti-facebook"></i>{{ 'social_media'|trans }} </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <h3 class="menu-title">{{ 'recruitments'|trans }}</h3><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ 'recruitments'|trans }}
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_recruitments') }}">{{ 'recruitments_list'|trans }}</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_recruitment_new') }}">{{ 'add_recruitment'|trans }}</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_recruitment_statuses') }}">{{ 'recruitment_status_list'|trans }}</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_recruitment_status_new') }}">{{ 'add_recruitment_status'|trans }}</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_recruitment_users') }}">{{ 'recruitments_user_offer'|trans }}</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_recruitment_user_statuses') }}">{{ 'recruitment_user_statuses'|trans }}</a></li>
+                        </ul>
+                    </li>
+                    <h3 class="menu-title">{{ 'realizations'|trans }}</h3>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ 'realizations'|trans }}
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_realizations') }}">{{ 'realizations_list'|trans }}</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_realization_new') }}">{{ 'realization_new'|trans }}</a></li>
+                        </ul>
+                    </li>
+                    <h3 class="menu-title">CMS</h3><!-- /.menu-title -->
+
+                    <li class="">
+                        <a href="{{ path('file_manager',{'conf':'default'}) }}"> <i class="menu-icon fa ti-files"></i>Zarządzanie plikami </a>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-file-o"></i>Artykuły</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_articles') }}">Lista artykułów</a></li>
+                            <li><i class="fa fa-plus-square"></i><a href="{{ path('admin_article_new') }}">Dodaj artykuł</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-file-o"></i>Menu
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_menus') }}">Lista pozyci menu</a></li>
+                            <li><i class="fa fa-plus-square"></i><a href="{{ path('admin_menu_new') }}">Dodaj pozycję menu</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-file-o"></i>Kategorie</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_categories') }}">Lista kategorii</a></li>
+                            <li><i class="fa fa-plus-square"></i><a href="{{ path('admin_category_new') }}">Dodaj kategorię</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-file-o"></i>Moduły
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_modules') }}">Lista</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_module_positions') }}">Lista pozycji</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_module_genuses') }}">Lista typów</a></li>
+                        </ul>
+                    </li>
+
+                    <h3 class="menu-title">{{ 'newsletter.newsletter'|trans }}</h3>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ 'newsletter.newsletter'|trans }}
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_newsletters') }}">{{ 'newsletter.newsletters'|trans }}</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_newsletter_new') }}">{{ 'newsletter.new'|trans }}</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_newsletter_add_to_queue') }}">{{ 'newsletter.send'|trans }}</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_emails_queue') }}">{{ 'email_queue.emails_queue'|trans }}</a></li>
+                        </ul>
+                    </li>
+                    <h3 class="menu-title">{{ 'opinions.opinions'|trans }}</h3>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ 'opinions.opinions'|trans }}
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_opinions') }}">{{ 'opinions.opinions'|trans }}</a></li>
+                            </ul>
+                    </li>
+                    <h3 class="menu-title">{{ 'zbiorki.zbiorki'|trans }}</h3>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ 'zbiorki.zbiorki'|trans }}
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_zbiorki') }}">{{ 'zbiorki.zbiorki'|trans }}</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_pakiety') }}">{{ 'zbiorki.pakiety'|trans }}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            {% elseif is_granted('ROLE_REDAKTOR') %}
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="{{ path('admin') }}"> <i class="menu-icon fa fa-dashboard"></i>{{ 'dashboard'|trans }} </a>
+                    </li>
+
+                    <h3 class="menu-title">CMS</h3><!-- /.menu-title -->
+
+                    <li class="">
+                        <a href="{{ path('file_manager',{'conf':'default'}) }}"> <i class="menu-icon fa ti-files"></i>Zarządzanie plikami </a>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-file-o"></i>Artykuły</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_articles') }}">Lista artykułów</a></li>
+                            <li><i class="fa fa-plus-square"></i><a href="{{ path('admin_article_new') }}">Dodaj artykuł</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-file-o"></i>Kategorie</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_categories') }}">Lista kategorii</a></li>
+                            <li><i class="fa fa-plus-square"></i><a href="{{ path('admin_category_new') }}">Dodaj kategorię</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-file-o"></i>Moduły
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_modules') }}">Lista</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_module_positions') }}">Lista pozycji</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ path('admin_module_genuses') }}">Lista typów</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            {% endif %}
+        </div>
+    </nav>
+</aside>

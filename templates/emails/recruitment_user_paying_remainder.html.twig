@@ -1,0 +1,26 @@
+{% extends 'emails/base.html.twig' %}
+
+{% block body %}
+    Witaj user<br/><br/>
+
+    Przypominamy o wpłacie deklarowanej kwoty<br/>
+
+
+    Jeżeli nie otrzymamy deklarowanej kwoty wówczas twoja umowy pożyczki zostanie anulowana<br/><br/>
+
+
+    Dane do przelewu:<br/>
+
+
+    {{ config.config.title }}<br/>
+    {{ config.config.address }}<br/>
+    bzwbk rach nr.93 1090 2590 0000 0001 3583 9742<br/>
+
+
+    W tytule wpisz nr oferty {{ recruitment.number }}<br/><br/>
+
+
+    <a href="{{ absolute_url(path('login')) }}">Zaloguj się</a> już teraz na swoim <a href="{{ absolute_url(path('login')) }}">koncie</a><br/>
+{% endblock %}
+
+

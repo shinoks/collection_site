@@ -1,0 +1,6 @@
+front_invest:
+    path: /
+    controller: App\Controller\ZainwestujController::investPage
+front_invest_pay:
+    path: /pay
+    controller: App\Controller\ZainwestujController::investPayPage

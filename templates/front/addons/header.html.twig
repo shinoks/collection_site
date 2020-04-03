@@ -1,0 +1,108 @@
+<div id="preloader">
+    <div id="status">&nbsp;</div>
+</div>
+
+<div class="header-connect">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-sm-7  col-xs-12">
+                <div class="header-half header-call">
+                    <span><i class="pe-7s-call"></i> {{ config.config.phone }}</span>
+                    <span><i class="pe-7s-mail"></i> {{ config.config.email }}</span>
+                </div>
+            </div>
+            <div class="col-md-4 col-md-offset-3 col-sm-5  col-xs-12">
+                <div class="pull-right-menu">
+                    {% include 'front/modules/social_media.html.twig' %}
+                    {% if app.user %}
+                        <a class="btn-xs btn-orange" href="{{ path('front_user_account') }}">{{ 'account'|trans }}</a>
+                        <a class="btn-xs btn-default" href="{{ path('logout') }}">{{ 'logout'|trans }}</a>
+                    {% else %}
+                        <a class="btn-xs btn-default" href="{{ path('login') }}">{{ 'login'|trans }}</a>
+                        <a class="btn-xs btn-navyblue" href="{{ path('register') }}">{{ 'register'|trans }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="navi" style="z-index: 99">
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a  href="{{ path('index_start') }}"><img class="logo" src="{{ asset(config.config.logoMain) }}" alt=""></a>
+        </div>
+
+        <div class="collapse navbar-collapse yamm" id="navigation">
+            <div class="text-center">
+            <ul class="main-nav nav navbar-nav" style="float:none;display:inline-block;">
+                {% if menu.getActiveMainMenu is not empty %}{% set activeMenu = menu.getActiveMainMenu.getId %}{% endif %}
+                {% if menu.getMainMenu is not empty %}
+                    {% for menuItem in menu.getMainMenu %}
+                        {% set caret = '' %}
+                        {% set attr = '' %}
+                        {% if menuItem.childrens is not empty %}
+                            {% set caret = '<b class="caret"></b>' %}
+                            {% set attr = ' class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0.6s" ' %}
+                        {% endif %}
+                         <li class="{% if menu.getActiveMainMenu is not empty %}{% if menuItem.id == activeMenu %}active{% endif %}{% endif %} ">
+                            <a {{ attr|raw }} href="{{ menuItem.href }}">{{ menuItem.name }}{{ caret|raw }}</a>
+                                {% if menuItem.childrens is not empty %}
+                                    <ul class="dropdown-menu navbar-nav">
+                                        {% for child in menuItem.childrens %}
+                                           <li>
+                                              <a href="{{ child.href }}">{{ child.name }}</a>
+                                           </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                    {% endfor %}
+                {% endif %}
+            </ul><br/>
+            </div>
+        </div>
+    </div>
+</nav>
+    <div class="menuColor text-center" style="max-width: 100vw;">
+        <ul id="navigation2" class="main-nav nav navbar-nav" >
+            {% if menu.getActiveMainColorMenu is not empty %}{% set activeMenu = menu.getActiveMainColorMenu.getId %}{% endif %}
+            {% if menu.getMainColorMenu is not empty %}
+                {% for menuItem in menu.getMainColorMenu %}
+                    {% set caret = '' %}
+                    {% set attr = '' %}
+                    {% if menuItem.childrens is not empty %}
+                        {% set caret = '<b class="caret"></b>' %}
+                        {% set attr = ' class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0.6s" ' %}
+                    {% endif %}
+                    <li class="menuColorItem {% if menu.getActiveMainMenu is not empty %}{% if menuItem.id == activeMenu %}active{% endif %}{% endif %} ">
+                        <a {{ attr|raw }} href="{{ menuItem.href }}">{{ menuItem.name }}{{ caret|raw }}</a>
+                        {% if menuItem.childrens is not empty %}
+                            <ul class="dropdown-menu navbar-nav">
+                                {% for child in menuItem.childrens %}
+                                    <li>
+                                        <a href="{{ child.href }}">{{ child.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+    <div class="count-area">
+        <div class="counter-min text-center" id="counter-min">
+            <span class="count-all"> <span class="counter-head"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> Stan zbiórki:</span> <span class="counter-count"> 0 zł </span></span>
+            <span class="count-all"><span class="counter-head"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span> Cel zbiórki:</span> <span class="counter-count"> 0 zł </span></span>
+            <span class="count-all"><span class="counter-head"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Inwestorzy:</span> <span class="counter-count"> 0 </span></span>
+            <span class="count-all"><span class="counter-head"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Do końca:</span> <span class="counter-count"> 0 dni </span></span>
+        </div>
+    </div>
+</div>

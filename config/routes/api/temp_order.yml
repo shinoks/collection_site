@@ -1,0 +1,3 @@
+api_make_temp_order:
+    path: /temporder/{zipCode}
+    controller: App\Controller\ZainwestujController::makeTempOrder
